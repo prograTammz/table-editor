@@ -19,12 +19,17 @@ import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
-// Components
 
+//Guards
+import { AuthGuard } from './guards/auth.guard';
+import { IsAdminGuard } from './guards/is-admin.guard';
+
+// Components
 import { LoginComponent } from './pages/login/login.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { TableEditorComponent } from './pages/table-editor/table-editor.component';
 import { NavigationComponent } from './navigation/navigation.component';
+
 
 
 const angularMaterialImports = [
@@ -55,7 +60,7 @@ const angularMaterialImports = [
     ReactiveFormsModule,
     ...angularMaterialImports
   ],
-  providers: [DexieService],
+  providers: [DexieService, AuthGuard, IsAdminGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
