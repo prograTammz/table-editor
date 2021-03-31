@@ -7,4 +7,8 @@ export class DexieService extends Dexie {
       data: '++id, value',
     });
   }
+
+  public doesExist() {
+    return Dexie.exists('TableEditor');
+  }
 }
