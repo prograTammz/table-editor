@@ -6,12 +6,28 @@
         <h2>Data generation ⚙️</h2>
 
         <h3>Data Size</h3>
-
+        <p>The dataset generated contains from 10 to 100 character per record, as we have 100 record (column), per row and 6000 row which makes
+            about 60,000 Record,the size of the data is huge, which will overload the main thread when the app is initializing which in worse case can lead
+            to the browser/tab to crash and provide terrible experience.
+        </p>
         <h3>Web Worker</h3>
+        <p>The generation of the dataset needs to be moved from the main thread, and that is possible with webworker. Web worker in a thread asyncly communicating with the main
+            thread which is responsible for rendering the interface, the CPU intensive tasks as generating 60,000 records can run in separte thread and then destoryed to prevent
+            <b>memory leak</b>.
+        </p>
     </article>
     <!-- Data Storage -->
     <article>
         <h2>Data Storage 💾</h2>
+        <h3>Local Storage</h3>
+        <p>The dataset has60,000 Record,the size of the data is huge, about 10MB in size. The first logical storage method is <b>Local Storage</b> which needs the 
+            data to be parsed to String via <q>JSON.stringify()</q> at which the file can go nearly 35MB, and that's above the allowed quota for local storage</p>
+        <h3>IndexedDB</h3>
+        <p>The indexedDB is made for that purpose, it allow you to make a NO-SQL database and perform queries like MongoDB which also made for high performance queries, it runs in
+            a different thread different from the main thread, which won't negatively impact the performance.
+        </p>
+        <h3>Dexie.js</h3>
+        <p>Dexie.js is used as it provides indexedDB promise wrapper and cool functionalities and extremely small in size, as well as being well maintained</p>
     </article>
     <!-- Login & Logout -->
     <article>
@@ -21,5 +37,6 @@
     <!-- Table Editor Logic -->
     <article>
         <h2>Table Editor Logic 🖊️</h2>
+
     </article>
 </section>
