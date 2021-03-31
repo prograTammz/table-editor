@@ -8,6 +8,7 @@ import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { TableEditorComponent } from './pages/table-editor/table-editor.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavigationComponent } from './navigation/navigation.component';
+import { DexieService } from './services/dexie.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { NavigationComponent } from './navigation/navigation.component';
     AppRoutingModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [DexieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
