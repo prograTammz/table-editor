@@ -1,6 +1,7 @@
 import { Component, OnInit, HostListener, ViewChild } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
 import { MatSidenav } from '@angular/material/sidenav';
+import {LoginService} from '../services/login.service';
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
@@ -13,7 +14,7 @@ export class NavigationComponent implements OnInit {
   public viewWidth: number;
   public isDesktop: boolean
 
-  constructor(public router: Router) { }
+  constructor(public router: Router, private auth: LoginService) { }
 
   ngOnInit(): void {
     // Getting view width while init
@@ -33,7 +34,7 @@ export class NavigationComponent implements OnInit {
   }
 
   logout() {
-
+    this.auth.logout();
   }
 
   @HostListener('window:resize', ['$event'])
