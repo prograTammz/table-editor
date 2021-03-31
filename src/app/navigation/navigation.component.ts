@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, HostListener, ViewChild } from '@angular/core';
+import { NavigationStart, Router } from '@angular/router';
+import { MatSidenav } from '@angular/material/sidenav';
 @Component({
   selector: 'app-navigation',
   templateUrl: './navigation.component.html',
@@ -7,9 +8,46 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavigationComponent implements OnInit {
 
-  constructor() { }
+  @ViewChild('sideNav') sideNav: MatSidenav;
+  // View States
+  public viewWidth: number;
+  public isDesktop: boolean
+
+  constructor(public router: Router) { }
 
   ngOnInit(): void {
+    // Getting view width while init
+    this.viewWidth = window.innerWidth;
+    
+    if (this.viewWidth > 1280) {
+      this.isDesktop = true;
+    } else {
+      this.isDesktop = false;
+    }
+
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationStart && !this.isDesktop) {
+        this.sideNav.close();
+      }
+    })
+  }
+
+  logout() {
+
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event): void {
+    this.viewWidth = event.target.innerWidth;
+    this.isDesktop = false;
+    if (this.viewWidth > 1280) {
+      this.isDesktop = true;
+    }
+  }
+
+  resetPosition() {
+    const elm = document.getElementById("page-container");
+    elm.scrollTop = 0;
   }
 
 }

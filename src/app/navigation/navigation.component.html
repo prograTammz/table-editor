@@ -1,1 +1,46 @@
-<p>navigation works!</p>
+<header>
+    <mat-toolbar>
+      <mat-toolbar-row class="h-4 flex justify-between">
+        <!-- SideNav toggle button -->
+        <div class="flex items-center">
+          <button mat-icon-button class="nav-header--burger-icon" aria-label="Toggle side menu" role="button"
+            (click)="sideNav.toggle()">
+            <mat-icon>menu</mat-icon>
+          </button>
+        </div>
+  
+        <!-- Notification button -->
+        <div class="flex items-center">
+          <button mat-flat-button (click)="logout()">
+              <mat-icon>logout</mat-icon>
+              <span>Logout</span>
+          </button>
+        </div>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </header>
+
+  <!-------------------SIDENAV--------------------- -->
+  <mat-sidenav-container class="sidenav-container" [hasBackdrop]="isDesktop ? false : true">
+    <mat-sidenav #sideNav opened="true" [opened]="isDesktop ? true : false" [mode]="isDesktop ? 'side' : 'over'">
+      <mat-nav-list>
+        <mat-list>
+          <div>
+            <!-- Dashboard List item -->
+            <mat-list-item class="flex items-center my-2" [routerLinkActive]="['is-active']" routerLink="/app/welcome">
+              <mat-icon>book</mat-icon>
+              <span>Welcome</span>
+            </mat-list-item>
+            <!-- Product List item -->
+            <mat-list-item class="flex items-center my-2" [routerLink]="['/app', 'tableEditor']" [routerLinkActive]="['is-active']">
+              <mat-icon>table_view</mat-icon>
+              <span>Table Editor</span>
+            </mat-list-item>
+            </div>
+        </mat-list>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content class="page-content" id="page-container">
+      <router-outlet (activate)="resetPosition()"></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
