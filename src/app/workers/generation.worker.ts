@@ -1,5 +1,4 @@
 /// <reference lib="webworker" />
-import {Record, Entry, Data} from '../models/model';
 //Generates a string from CAPs Alphapet with random value between min & max
 function generateString(min: number,max: number) {
   let result = ' ';
@@ -36,7 +35,6 @@ function createData(rows: number,cols: number) {
 //Listens to the main thread and post the data to it.
 addEventListener('message', (message: MessageEvent) => {
   const response = createData(message.data.rows, message.data.cols);
-  console.log(response);
   postMessage(response);
 });
 
