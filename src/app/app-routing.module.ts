@@ -17,8 +17,8 @@ const routes: Routes = [
     path: 'app',
     component: NavigationComponent,
     children: [
-      {path: 'welcome', component: WelcomeComponent, canLoad: [AuthGuard]},
-      {path: 'tableEditor', component: TableEditorComponent, canLoad: [AuthGuard, IsAdminGuard]}
+      {path: 'welcome', component: WelcomeComponent, canActivate: [AuthGuard]},
+      {path: 'tableEditor', component: TableEditorComponent, canActivate: [AuthGuard, IsAdminGuard]}
     ]
   }
 ];
