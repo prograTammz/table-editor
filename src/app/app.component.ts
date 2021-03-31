@@ -1,10 +1,22 @@
 import { Component } from '@angular/core';
-
+import {TableQueryService} from './services/table-query.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'table-editor';
+
+  worker = new Worker('./workers/generation.worker', { type: 'module' });
+
+  constructor(public tableQuery: TableQueryService) {
+      const worker = new Worker('./workers/generation.worker', { type: 'module' });
+      worker.onmessage = ({ data }) => {
+        this.tableQuery.bulkAdd(data);
+        this.tableQuery.
+      };
+      worker.postMessage({rows: 6000, cols: 100});
+    
+  }
+  
 }
