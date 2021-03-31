@@ -1,1 +1,44 @@
-<p>login works!</p>
+<section class="login">
+    <div class="login-content">
+        <h1>Welcome! 👋</h1>
+
+        <form [formGroup]="loginForm">
+            <mat-form-field appearance="outline">
+              <mat-label>Username</mat-label>
+              <input matInput type="text" placeholder="Enter your user name" formControlName="username" (input)="onChange()"
+                required />
+              <mat-error *ngIf="
+                  f.username.hasError('required') &&
+                  (f.username.touched || f.username.dirty)
+                ">
+                Username is required
+              </mat-error>
+              <mat-error *ngIf="f.username.hasError('loginError')" class="validation">
+                wrong login data.
+              </mat-error>
+            </mat-form-field>
+    
+            <mat-form-field appearance="outline">
+              <mat-label>Password</mat-label>
+              <input (keyup.enter)="onSubmit()" (input)="onChange()" placeholder="Enter your password" formControlName="password" matInput [type]="hide ? 'password' : 'text'" />
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+              </button>
+    
+              <mat-error *ngIf="
+                  f.password.hasError('required') &&
+                  (f.password.touched || f.password.dirty)
+                " class="validation">
+                Password is required
+              </mat-error>
+              <mat-error *ngIf="f.password.hasError('loginError')" class="validation">
+                wrong login data
+              </mat-error>
+            </mat-form-field>
+            <div class="flex flex-row mb-14 justify-between">
+                <button mat-stroked-button type="submit" (click)="onSubmit()">Continue</button>
+            </div>
+          </form>
+    </div>
+</section>
