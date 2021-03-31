@@ -6,17 +6,21 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 import { TableEditorComponent } from './pages/table-editor/table-editor.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NavigationComponent } from './navigation/navigation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     WelcomeComponent,
-    TableEditorComponent
+    TableEditorComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
