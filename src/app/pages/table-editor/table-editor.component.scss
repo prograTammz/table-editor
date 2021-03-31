@@ -1,0 +1,13 @@
+.table-container{
+    width: 100%;
+    overflow: auto;
+}
+
+td {
+    padding: 0;
+    height: 48px;
+    input {
+        border: 0;
+        height: 100%;
+    }
+}
