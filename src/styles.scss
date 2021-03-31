@@ -18,3 +18,60 @@
   }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+//global spinner class
+.spinner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(117, 120, 123, 0.4);
+    border-radius: 0 8px 8px 8px;
+    height: calc(100vh);
+    position: fixed;
+}
+
+
+//Global table styling
+table {
+    width: 100%;
+
+    .mat-header-row {
+        height: 35px !important;
+    }
+
+    th {
+        font-size: 11px;
+        line-height: 16px;
+        font-weight: 200;
+        padding: 5px 15px;
+        background: #fbfbfb;
+        text-transform: capitalize;
+    }
+
+    td {
+        font-size: 14px;
+        background: #ffffff;
+        border-bottom: 1px #e6e6eb solid;
+        white-space: nowrap;
+        padding: 10px 15px;
+        mat-checkbox {
+            margin: 0 10px;
+        }
+
+        ::ng-deep .mat-checkbox-checked.mat-primary .mat-checkbox-background,
+        .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+            background-color: #393535;
+        }
+
+        ::ng-deep .mat-checkbox-checked.mat-primary .mat-checkbox-ripple .mat-ripple-element {
+            background-color: #393535 !important;
+        }
+    }
+}
