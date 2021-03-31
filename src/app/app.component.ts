@@ -13,7 +13,6 @@ export class AppComponent {
       const worker = new Worker('./workers/generation.worker', { type: 'module' });
       worker.onmessage = ({ data }) => {
         this.tableQuery.bulkAdd(data);
-        this.tableQuery.
       };
       worker.postMessage({rows: 6000, cols: 100});
     
