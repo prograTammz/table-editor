@@ -31,8 +31,8 @@ export class TableQueryService {
     return this.table.add(record);
   }
 
-  update(id: number, record: Record) {
-    return this.table.update(id, record);
+  update(id: number, record: any) {
+    return this.table.put(record, id);
   }
 
   remove(id: number) {
