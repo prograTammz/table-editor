@@ -52,7 +52,8 @@ export class TableEditorComponent implements OnInit {
   onScroll(event: any) {
       // visible height + pixel scrolled >= total height 
       if (event.target.offsetHeight + event.target.scrollTop >= event.target.scrollHeight) {
-        console.log("End");
+        this.page++;
+        this.getData();
       }
   }
 }
