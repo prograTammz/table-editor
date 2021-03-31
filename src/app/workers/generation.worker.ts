@@ -13,6 +13,12 @@ function generateString(min,max) {
   return result;
 }
 
+//Generates a random Integer between min & max
+function randomIntFromInterval(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+  
+
 
 
 
