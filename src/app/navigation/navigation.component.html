@@ -10,7 +10,7 @@
           <span>Table Editor</span>
         </div>
   
-        <!-- Notification button -->
+        <!-- Logout button -->
         <div class="flex items-center">
           <button mat-flat-button (click)="logout()">
               <mat-icon>logout</mat-icon>
@@ -27,13 +27,11 @@
       <mat-nav-list>
         <mat-list>
           <div>
-            <!-- Dashboard List item -->
             <mat-list-item class="flex items-center my-2" [routerLinkActive]="['is-active']" routerLink="/app/welcome">
               <mat-icon>book</mat-icon>
               <span>Welcome</span>
             </mat-list-item>
-            <!-- Product List item -->
-            <mat-list-item class="flex items-center my-2" [routerLink]="['/app', 'tableEditor']" [routerLinkActive]="['is-active']">
+            <mat-list-item class="flex items-center my-2"  *ngIf="isAdmin" [routerLink]="['/app', 'tableEditor']" [routerLinkActive]="['is-active']">
               <mat-icon>table_view</mat-icon>
               <span>Table Editor</span>
             </mat-list-item>

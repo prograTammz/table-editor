@@ -12,7 +12,8 @@ export class NavigationComponent implements OnInit {
   @ViewChild('sideNav') sideNav: MatSidenav;
   // View States
   public viewWidth: number;
-  public isDesktop: boolean
+  public isDesktop: boolean;
+  public isAdmin: boolean = false;
 
   constructor(public router: Router, private auth: LoginService) { }
 
@@ -30,7 +31,9 @@ export class NavigationComponent implements OnInit {
       if (event instanceof NavigationStart && !this.isDesktop) {
         this.sideNav.close();
       }
-    })
+    });
+
+    this.isAdmin = this.auth.token?.role === 'admin';
   }
 
   logout() {
