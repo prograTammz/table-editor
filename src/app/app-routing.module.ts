@@ -8,7 +8,7 @@ import { TableEditorComponent } from './pages/table-editor/table-editor.componen
 import { WelcomeComponent } from './pages/welcome/welcome.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/app/dashboard', pathMatch: 'full' },
+  { path: '', redirectTo: '/app/welcome', pathMatch: 'full' },
 
   {
     path: 'login', component: LoginComponent,
