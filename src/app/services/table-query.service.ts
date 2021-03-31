@@ -24,7 +24,7 @@ export class TableQueryService {
   }
 
   getHundred(step: number) {
-    return this.table.offset(step*100).limit(100);
+    return this.table.offset(step*100).limit(100).toArray();
   }
 
   add(record: Record) {
@@ -41,5 +41,9 @@ export class TableQueryService {
 
   bulkAdd(data: any[]) {
     return this.table.bulkAdd(data);
+  }
+
+  getRow(id:number){
+    return this.table.get(id);
   }
 }
