@@ -6,10 +6,11 @@ import { Router } from '@angular/router';
 })
 export class LoginService {
 
-  public token: Object;
+  public token: any;
   public storage: Storage;
   constructor(private router: Router) { 
     this.storage = window.sessionStorage;
+    this.token = JSON.parse(this.storage.getItem('token'));
   }
 
 
