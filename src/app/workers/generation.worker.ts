@@ -1,5 +1,5 @@
 /// <reference lib="webworker" />
-
+import {Record, Entry, Data} from '../models/model';
 //Generates a string from CAPs Alphapet with random value between min & max
 function generateString(min: number,max: number) {
   let result = ' ';
