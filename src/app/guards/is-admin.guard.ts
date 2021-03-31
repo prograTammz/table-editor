@@ -1,16 +1,23 @@
 import { Injectable } from '@angular/core';
-import { CanLoad, Route, UrlSegment } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, CanLoad, Route, Router, RouterStateSnapshot, UrlSegment, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
+import { LoginService } from '../services/login.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class IsAdminGuard implements CanLoad {
-  constructor() { }
-  canLoad(
-    route: Route,
+export class IsAdminGuard implements CanActivate {
+    isAdmin: boolean;
+  constructor(private auth: LoginService, private router: Router) { }
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): true | false | UrlTree {
+        this.isAdmin = this.auth.token?.role === 'admin';
 
-    segments: UrlSegment[]): Observable<boolean> | Promise<boolean> | boolean {
-    return true;
+        if(!this.isAdmin) {
+            this.router.navigate(['app', 'welcome'])
+        }
+
+        return this.isAdmin;
   }
 }
