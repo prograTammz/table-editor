@@ -43,7 +43,6 @@ export class TableEditorComponent implements OnInit {
 
   edit(row) {
     this.loading = true;
-    console.log(row);
     this.tableQuery.update(row.id, row).then(_ => {
       this.loading = false;
     })
