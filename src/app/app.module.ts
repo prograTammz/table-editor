@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DexieService } from './services/dexie.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -19,6 +19,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
 
 //Guards
 import { AuthGuard } from './guards/auth.guard';
@@ -32,6 +33,7 @@ import { NavigationComponent } from './navigation/navigation.component';
 
 
 
+
 const angularMaterialImports = [
   MatDialogModule,
   MatProgressSpinnerModule,
@@ -42,7 +44,8 @@ const angularMaterialImports = [
   MatInputModule,
   MatListModule,
   MatDividerModule,
-  MatButtonModule
+  MatButtonModule,
+  MatTableModule
 ];
 
 @NgModule({
@@ -58,6 +61,7 @@ const angularMaterialImports = [
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    FormsModule,
     ...angularMaterialImports
   ],
   providers: [DexieService, AuthGuard, IsAdminGuard],
