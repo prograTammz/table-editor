@@ -37,6 +37,13 @@
     <!-- Table Editor Logic -->
     <article>
         <h2>Table Editor Logic 🖊️</h2>
-
+        <h3>Page Loading</h3>
+        <p>The table page is only accessible if the User is logged and admin via guard, which checks the Token like object stored in the local storage and check the user role.</p>
+        <h3>Accessing the Data</h3>
+        <p>The page loads when the data is being retrieved from indexedDB, once the promise is resolved the loading spinner will fade away and the retreived data will be parsed to the table,
+            the page loads extra 100 row when the page is scrolled to the bottom.
+        </p>
+        <h3>Editing</h3>
+        <p>Each row will have a edit button which will make a query to the indexedDB and updates the value with it's ID to the Database</p>
     </article>
 </section>
