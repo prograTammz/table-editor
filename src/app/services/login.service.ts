@@ -28,7 +28,7 @@ export class LoginService {
     if(username === 'admin' && password === 'admin') {
       isValid = true;
       this.generateToken(username,'admin');
-      this.router.navigate(['app','tableEditor']);
+      this.router.navigate(['app','welcome']);
     }
 
     return isValid;
